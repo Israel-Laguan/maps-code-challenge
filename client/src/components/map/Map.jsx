@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { Circle, MapContainer, TileLayer } from 'react-leaflet';
 
 import Markers from './marker/Marker';
 
@@ -13,6 +13,8 @@ const Map = ({
   hiddenUserForm,
   markerPosition,
   setMarkerPosition,
+  circle,
+  setCircle,
   onItemSelect = () => {},
 }) => {
   const mapRef = useRef(null);
@@ -113,8 +115,10 @@ const Map = ({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <Circle center={circle.center} radius={circle.radius} />
         <Markers
           results={results}
+          setCircle={setCircle}
           onItemSelect={onItemSelect}
           selectedItem={selectedItem}
           hiddenUserForm={hiddenUserForm}

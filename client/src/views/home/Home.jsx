@@ -30,6 +30,11 @@ const Home = () => {
     longitude: '',
   });
   const [hiddenUserForm, setHiddenUserForm] = useState(true);
+  const [searchByKm, setSearchByKm] = useState(0);
+  const [circle, setCircle] = useState({
+    center: userPosition,
+    radius: 0,
+  });
 
   const { get, post, response, loading, error } = useFetch(
     Constants.backendBasePath,
@@ -102,9 +107,7 @@ const Home = () => {
     setSelectedPerson(person);
   };
 
-  const onSubmitSearch = async (e, searchByKm) => {
-    e.preventDefault();
-
+  const onSubmitSearch = async () => {
     if (!searchByKm || searchByKm < 1) {
       return;
     }
@@ -133,6 +136,9 @@ const Home = () => {
         loading={loading}
         error={error}
         getAllResults={getAPIPersons}
+        searchByKm={searchByKm}
+        setSearchByKm={setSearchByKm}
+        setCircle={setCircle}
         onSearch={onSubmitSearch}
         onItemSelect={onPersonSelected}
         hiddenUserForm={hiddenUserForm}
@@ -148,6 +154,8 @@ const Home = () => {
         hiddenUserForm={hiddenUserForm}
         markerPosition={markerPosition}
         setMarkerPosition={setMarkerPosition}
+        circle={circle}
+        setCircle={setCircle}
       />
     </div>
   );

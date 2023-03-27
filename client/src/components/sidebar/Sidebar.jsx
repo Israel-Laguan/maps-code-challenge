@@ -11,6 +11,9 @@ const Sidebar = ({
   userLatitude,
   userLongitude,
   hiddenUserForm,
+  searchByKm,
+  setSearchByKm,
+  setCircle,
   getAllResults = () => {},
   onSearch = () => {},
   onItemSelect = () => {},
@@ -29,9 +32,10 @@ const Sidebar = ({
       />
       <hr />
       <SearchForm
-        {...{
-          onSearch,
-        }}
+        onSearch={onSearch}
+        searchByKm={searchByKm}
+        setSearchByKm={setSearchByKm}
+        setCircle={setCircle}
       />
       <hr />
       <AddUserForm

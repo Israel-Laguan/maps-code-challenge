@@ -15,11 +15,18 @@ const Markers = ({
   hiddenUserForm,
   markerPosition,
   setMarkerPosition,
+  setCircle,
 }) => {
   const map = useMapEvents({
     click(e) {
       if (hiddenUserForm) {
         map.locate();
+        map.on('locationfound', (e) => {
+          setCircle((prev) => ({
+            ...prev,
+            center: [e.latlng.lat, e.latlng.lng],
+          }));
+        });
         return;
       }
       setMarkerPosition((prev) => ({
@@ -57,6 +64,10 @@ const Markers = ({
               eventHandlers={{
                 click: () => {
                   onItemSelect(item);
+                  setCircle((prev) => ({
+                    ...prev,
+                    center: [item.latitude, item.longitude],
+                  }));
                 },
               }}
               opacity={!selectedItem?.id || isSelected() ? 1 : 0.3}
