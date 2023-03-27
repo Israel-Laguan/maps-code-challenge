@@ -2,17 +2,17 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "web-test-runner \"src/**/*.test.jsx\"",
+    "test": "web-test-runner \"src/**/*.test.jsx\" --passWithNoTests",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "prettier --check \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
     "@fontsource/roboto": "^4.5.8",
-    "leaflet": "^1.9.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-leaflet": "^4.2.0",
-    "use-http": "^1.0.27"
+    "leaflet": "~1.9.3",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2",
+    "react-leaflet": "~3.2.5",
+    "use-http": "~1.0.27"
   },
   "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.1.0",
@@ -22,6 +22,6 @@
     "@web/test-runner": "^0.13.3",
     "chai": "^4.3.4",
     "prettier": "^2.2.1",
-    "snowpack": "^3.3.7"
+    "snowpack": "~3.3.7"
   }
 }

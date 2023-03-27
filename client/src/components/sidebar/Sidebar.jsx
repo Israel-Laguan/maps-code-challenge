@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Loading from '../loading/Loading.jsx';
 import { Results, AddUserForm, MyLocation, SearchForm } from './components';
@@ -10,16 +10,18 @@ const Sidebar = ({
   loading,
   userLatitude,
   userLongitude,
+  hiddenUserForm,
+  searchByKm,
+  setSearchByKm,
+  setCircle,
   getAllResults = () => {},
   onSearch = () => {},
   onItemSelect = () => {},
+  onHandleHiddenForm = () => {},
+  markerPosition,
+  setMarkerPosition,
   error,
 }) => {
-  const [hiddenserForm, setHiddenUserForm] = useState(true);
-  const onHandleHiddenForm = () => {
-    setHiddenUserForm(!hiddenserForm);
-  };
-
   return (
     <div className={`sidebar sidebar-show`}>
       <MyLocation
@@ -30,17 +32,20 @@ const Sidebar = ({
       />
       <hr />
       <SearchForm
-        {...{
-          onSearch,
-        }}
+        onSearch={onSearch}
+        searchByKm={searchByKm}
+        setSearchByKm={setSearchByKm}
+        setCircle={setCircle}
       />
       <hr />
       <AddUserForm
         {...{
           userLatitude,
           userLongitude,
-          hiddenserForm,
+          hiddenUserForm,
           onHandleHiddenForm,
+          markerPosition,
+          setMarkerPosition,
         }}
       />
       <hr />
